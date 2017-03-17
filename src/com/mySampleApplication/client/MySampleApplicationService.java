@@ -14,10 +14,10 @@ public interface MySampleApplicationService extends RemoteService {
      * Use MySampleApplicationService.App.getInstance() to access static instance of MySampleApplicationServiceAsync
      */
     public static class App {
-      private static MySampleApplicationServiceAsync ourInstance = GWT.create(MySampleApplicationService.class);
+        private static MySampleApplicationServiceAsync ourInstance = GWT.create(MySampleApplicationService.class);
 
-      public static synchronized MySampleApplicationServiceAsync getInstance() {
-        return ourInstance;
-      }
+        public static synchronized MySampleApplicationServiceAsync getInstance() {
+            return ourInstance;
+        }
     }
 }

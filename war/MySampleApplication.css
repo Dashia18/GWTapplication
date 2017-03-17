@@ -1,11 +1,61 @@
 /** Add css rules here for your application. */
 
 h1 {
-  font-size: 2em;
-  font-weight: bold;
-  text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
 }
 
-body,td,a,div,.p {
-    font-family:arial,sans-serif
+body, td, a, div, .p {
+    font-family: arial, sans-serif
 }
+
+
+.box-with-shadow{
+    width: 99%;
+    height: 50px;
+    margin: 0 auto;
+    box-shadow: 0 0 5px grey;
+    border-radius: 5px;
+    /*color: crimson;*/
+}
+#tittle-text{
+    font-size: 28px;
+    text-align:  center;
+    padding-top: 7px;
+    text-shadow: -1px 1px grey;
+    color: crimson;
+
+}
+.small-grey-text{
+    font-size: 14px;
+    color: grey;
+    font-style: italic;
+    padding-left: 10px;
+}
+.main-menu-style {
+    padding-left: 10px;
+}
+
+
+.gwt-MenuItem:hover {
+    color: crimson;
+}
+
+.gwt-MenuBar table{
+    border: 1px solid grey;
+    box-shadow: 0 0 5px grey;
+    border-radius: 5px;
+
+}
+.gwt-MenuItemSeparator{
+    border-left:  1px solid #e0e0e0;
+}
+#gwtContainer1{
+     height: 80px;
+
+ }
+#gwtContainer2{
+    padding-left: 10px;
+
+ }

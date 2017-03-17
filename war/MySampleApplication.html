@@ -1,39 +1,42 @@
 <html>
-  <head>
+<head>
 
     <!--                                           -->
     <!-- Any title is fine                         -->
     <!--                                           -->
-    <title>Wrapper HTML for App</title>
+    <title>Bus Timetable</title>
 
     <link type="text/css" rel="stylesheet" href="MySampleApplication.css">
 
     <!--                                            -->
     <!-- This script is required bootstrap stuff.   -->
     <!--                                            -->
-    <script type="text/javascript" language="javascript" src="MySampleApplication/MySampleApplication.nocache.js"></script>
-  </head>
+    <script type="text/javascript" language="javascript"
+            src="MySampleApplication/MySampleApplication.nocache.js"></script>
+</head>
 
-  <!--                                           -->
-  <!-- The body can have arbitrary html, or      -->
-  <!-- you can leave the body empty if you want  -->
-  <!-- to create a completely dynamic ui         -->
-  <!--                                           -->
-  <body>
+<!--                                           -->
+<!-- The body can have arbitrary html, or      -->
+<!-- you can leave the body empty if you want  -->
+<!-- to create a completely dynamic ui         -->
+<!--                                           -->
+<body>
 
-    <h1>Sample Application</h1>
 
-    <p>
-      This is an example of a host page for the App application.
-      You can attach a Web Toolkit module to any HTML page you like,
-      making it easy to add bits of AJAX functionality to existing pages
-      without starting from scratch.
+<div class="box-with-shadow">
+    <p id = tittle-text > Bus Timetable </p>
+</div>
+
+<div>
+    <p class="small-grey-text">
+        Hello! If You want to see the buses timetable on Svoboda square or manage of data, you can do this bellow by menu.
     </p>
+</div>
 
-    <table align="center">
-      <tr>
-        <td id="slot1"></td><td id="slot2"></td>
-      </tr>
-    </table>
-  </body>
+<div id="gwtContainer1"></div>
+<div id="gwtContainer2"></div>
+
+
+
+</body>
 </html>
