@@ -1,13 +1,18 @@
 package com.mySampleApplication.client;
 
+import com.mySampleApplication.shared.Bus;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+
+import java.util.List;
 
 @RemoteServiceRelativePath("MySampleApplicationService")
 public interface MySampleApplicationService extends RemoteService {
     // Sample interface method of remote interface
     String getMessage(String msg);
+    List<Bus> loadData(String msg);
+
 
     /**
      * Utility/Convenience class.
