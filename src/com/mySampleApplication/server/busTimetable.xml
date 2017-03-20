@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<buses>
+    <bus>
+        <number>1</number>
+        <beginstop>Minina sq.</beginstop>
+        <endstop>Sherbinki</endstop>
+        <timeofsvobodasq>16.00</timeofsvobodasq>
+    </bus>
+    <bus>
+        <number>3</number>
+        <beginstop>Svoboda sq.</beginstop>
+        <endstop>Krasnoe Sormovo</endstop>
+        <timeofsvobodasq>18.05</timeofsvobodasq>
+    </bus>
+    <bus>
+        <number>16</number>
+        <beginstop>Kyznechiha</beginstop>
+        <endstop>Gor`kogo sq.</endstop>
+        <timeofsvobodasq>12.07</timeofsvobodasq>
+    </bus>
+    <bus>
+        <number>38</number>
+        <beginstop>Kyznechiha</beginstop>
+        <endstop>Dolgopolova st.</endstop>
+        <timeofsvobodasq>11.55</timeofsvobodasq>
+    </bus>
+    <bus>
+        <number>40</number>
+        <beginstop>Akademicheskaya st.</beginstop>
+        <endstop>Ug district</endstop>
+        <timeofsvobodasq>6.50</timeofsvobodasq>
+    </bus>
+    <bus>
+        <number>41</number>
+        <beginstop>Kyznechiha</beginstop>
+        <endstop>Sed`moe nebo</endstop>
+        <timeofsvobodasq>16.37</timeofsvobodasq>
+    </bus>
+    <bus>
+        <number>58</number>
+        <beginstop>Akademicheskaya st.</beginstop>
+        <endstop>Petryaevka</endstop>
+        <timeofsvobodasq>11.40</timeofsvobodasq>
+    </bus>
+    <bus>
+        <number>61</number>
+        <beginstop>Akademicheskaya st.</beginstop>
+        <endstop>Dolgopolova st.</endstop>
+        <timeofsvobodasq>14.47</timeofsvobodasq>
+    </bus>
+    <bus>
+        <number>64</number>
+        <beginstop>Soc.gorod</beginstop>
+        <endstop>Svoboda sq.</endstop>
+        <timeofsvobodasq>17.35</timeofsvobodasq>
+    </bus>
+    <bus>
+        <number>68</number>
+        <beginstop>Kosmicheskay st.</beginstop>
+        <endstop>Svoboda sq.</endstop>
+        <timeofsvobodasq>11.15</timeofsvobodasq>
+    </bus>
+    <bus>
+        <number>12</number>
+        <beginstop>Krasnoe Sormovo</beginstop>
+        <endstop>Sherbinki</endstop>
+        <timeofsvobodasq>9.00</timeofsvobodasq>
+    </bus>
+    <bus>
+        <number>5</number>
+        <beginstop>Kyznechiha</beginstop>
+        <endstop>Krasnoe Sormovo</endstop>
+        <timeofsvobodasq>7.05</timeofsvobodasq>
+    </bus>
+    <bus>
+        <number>96</number>
+        <beginstop>Gor`kogo st.</beginstop>
+        <endstop>Kyznechiha</endstop>
+        <timeofsvobodasq>16.07</timeofsvobodasq>
+    </bus>
+    <bus>
+        <number>35</number>
+        <beginstop>Rodionova st.</beginstop>
+        <endstop>Dolgopolova st.</endstop>
+        <timeofsvobodasq>8.55</timeofsvobodasq>
+    </bus>
+    <bus>
+        <number>49</number>
+        <beginstop>Akademicheskaya st.</beginstop>
+        <endstop>Sed`moe nebo</endstop>
+        <timeofsvobodasq>14.50</timeofsvobodasq>
+    </bus>
+    <bus>
+        <number>71</number>
+        <beginstop>Petryaevka</beginstop>
+        <endstop>Sed`moe nebo</endstop>
+        <timeofsvobodasq>10.37</timeofsvobodasq>
+    </bus>
+    <bus>
+        <number>88</number>
+        <beginstop>Akademicheskaya st.</beginstop>
+        <endstop>Petryaevka</endstop>
+        <timeofsvobodasq>9.40</timeofsvobodasq>
+    </bus>
+    <bus>
+        <number>11</number>
+        <beginstop>Gagarina ave.</beginstop>
+        <endstop>Dolgopolova st.</endstop>
+        <timeofsvobodasq>13.47</timeofsvobodasq>
+    </bus>
+    <bus>
+        <number>44</number>
+        <beginstop>Soc.gorod</beginstop>
+        <endstop>Minina sq.</endstop>
+        <timeofsvobodasq>10.35</timeofsvobodasq>
+    </bus>
+    <bus>
+        <number>7</number>
+        <beginstop>Kosmicheskay st.</beginstop>
+        <endstop>Varvarskay st.</endstop>
+        <timeofsvobodasq>14.15</timeofsvobodasq>
+    </bus>
+
+
+</buses>
