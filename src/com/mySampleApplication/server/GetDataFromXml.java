@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -20,7 +21,6 @@ public class GetDataFromXml {
 
     public static List<Bus> getXMLdata(InputStream stream){
         List<Bus> buses;
-//        String filePath = "server/busTimeTable.xml";
         buses = new ArrayList<>();
 
 
@@ -61,19 +61,28 @@ public class GetDataFromXml {
                         for(int busIdx = 0; busIdx < fields.getLength(); busIdx++) {
                             Bus bus = new Bus();
                             Node busNode = fields.item(busIdx);
+
                             String number = getValue(busNode, "number");
-                            System.out.println("number = " + number);
                             String beginStop = getValue(busNode, "beginstop");
-                            System.out.println("beginStop = " + beginStop);
                             String endStop = getValue(busNode, "endstop");
-                            System.out.println("endStop = " + endStop);
                             String time = getValue(busNode, "timeofsvobodasq");
-                            System.out.println("time = " + time);
+
+//                            System.out.println("number = " + number);
+//                            System.out.println("beginStop = " + beginStop);
+//                            System.out.println("endStop = " + endStop);
+//                            System.out.println("time = " + time);
+
                             bus.setNumber(number);
                             bus.setBeginstop(beginStop);
                             bus.setEndstop(endStop);
                             bus.setTimeofsvobodasq(time);
+
+//                            System.out.println("number = " + bus.getNumber());
+//                            System.out.println("beginStop = " + bus.getBeginstop());
+//                            System.out.println("endStop = " + bus.getEndstop());
+//                            System.out.println("time = " + bus.getTimeofsvobodasq());
                             buses.add(bus);
+
                         }
                     }
                 }
@@ -81,7 +90,17 @@ public class GetDataFromXml {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(buses.size());
+//        System.out.println(buses.size());
+
+//        System.out.println("buses list size = " + buses.size());
+//        Iterator<Bus> iter = buses.iterator();
+//        Bus bus;
+//                while(iter.hasNext()){
+//                    bus = iter.next();
+//                    System.out.print(bus.getNumber() + " " +bus.getBeginstop()+
+//                            " "+bus.getEndstop()+" "+ bus.getTimeofsvobodasq());
+//                    System.out.println();
+//                }
 
         return buses;
     }
