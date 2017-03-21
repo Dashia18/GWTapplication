@@ -18,6 +18,7 @@ import com.mySampleApplication.shared.Bus;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -34,78 +35,16 @@ public class MySampleApplication implements EntryPoint {
     }
 
 
-    private static final List<Bus> BUSES = Arrays.asList(
-            new Bus("1","Minina sq","Sherbinki","12.00"),
-            new Bus("3","Svoboda sq","Krasnoe Sormovo","12.05"));
+//    private static final List<Bus> BUSES = Arrays.asList(
+//            new Bus("1","Minina sq","Sherbinki","12.00"),
+//            new Bus("3","Svoboda sq","Krasnoe Sormovo","12.05"));
 
-
+    static VerticalPanel panel = new VerticalPanel();
     public void onModuleLoad() {
-//        GetDataFromXml.getXMLdata();
-
 
         final Label label = new Label();
         final List<Bus> busList = new ArrayList<>();
-        // Create a CellTable.
-        CellTable<Bus> table = new CellTable<Bus>();
-        table.setKeyboardSelectionPolicy(HasKeyboardSelectionPolicy.KeyboardSelectionPolicy.ENABLED);
-        // Add a text column to show the name.
-        TextColumn<Bus> nameColumn =
-                new TextColumn<Bus>() {
-                    @Override
-                    public String getValue(Bus object) {
-                        return object.getNumber();
-                    }
-                };
-        table.addColumn(nameColumn, "Bus number");
-        TextColumn<Bus> beginStopColumn
-                = new TextColumn<Bus>() {
-            @Override
-            public String getValue(Bus object) {
-                return object.getBeginstop();
-            }
-        };
-        table.addColumn(beginStopColumn, "Begin stop");
-        // Add a text column to show the address.
-        TextColumn<Bus> endStopColumn
-                = new TextColumn<Bus>() {
-            @Override
-            public String getValue(Bus object) {
-                return object.getEndstop();
-            }
-        };
-        table.addColumn(endStopColumn, "End stop");
-
-        TextColumn<Bus> timeColumn
-                = new TextColumn<Bus>() {
-            @Override
-            public String getValue(Bus object) {
-                return object.getTimeofsvobodasq();
-            }
-        };
-        table.addColumn(timeColumn, "Time of the bus on Svoboda sq.");
-        // Add a selection model to handle user selection.
-        final SingleSelectionModel<Bus> selectionModel
-                = new SingleSelectionModel<Bus>();
-        table.setSelectionModel(selectionModel);
-        selectionModel.addSelectionChangeHandler(
-                new SelectionChangeEvent.Handler() {
-                    public void onSelectionChange(SelectionChangeEvent event) {
-                        Bus selected = selectionModel.getSelectedObject();
-                        if (selected != null) {
-                            Window.alert("You selected: " + selected.getNumber());
-                        }
-                    }
-                });
-        // Set the total row count. This isn't strictly necessary,
-        // but it affects paging calculations, so its good habit to
-        // keep the row count up to date.
-        table.setRowCount(BUSES.size(), true);
-        // Push the data into the widget.
-        table.setRowData(0, BUSES);
-        VerticalPanel panel = new VerticalPanel();
-        panel.setBorderWidth(1);
-        panel.add(table);
-
+        RootPanel.get("gwtContainer2").add(panel);
 
 
         // Create a menu bar
@@ -122,21 +61,17 @@ public class MySampleApplication implements EntryPoint {
             @Override
             public void execute() {
                 label.setText("");
-                RootPanel.get("gwtContainer2").add(panel);
-
+                panel.clear();
                 label.getElement().setInnerHTML("HOW TO TRANSPORT TIMETABLE");
-
-
             }
         });
 
         busesMenu.addItem("Sorting buses", new Command() {
             @Override
             public void execute() {
-//                showSelectedMenuItem("Sorting buses");
-                RootPanel.get("gwtContainer2").remove(panel);
+                label.setText("");
+                panel.clear();
                 MySampleApplicationService.App.getInstance().getMessage("Hello, World!", new MyAsyncCallback(label));
-
             }
         });
         busesMenu.addSeparator();
@@ -147,13 +82,9 @@ public class MySampleApplication implements EntryPoint {
         adminMenu.addItem("Open Administration page", new Command() {
             @Override
             public void execute() {
-//                showSelectedMenuItem("here will be appear a manage data");
                 label.setText("");
-                RootPanel.get("gwtContainer2").remove(panel);
-//                label.getElement().setInnerHTML("here administrator will be manage");
+                panel.clear();
                 MySampleApplicationService.App.getInstance().loadData("", new DataLoadAsyncCallback(busList));
-
-
 
             }
         });
@@ -161,7 +92,6 @@ public class MySampleApplication implements EntryPoint {
         menu.addItem(new MenuItem("Buses timetable", busesMenu));
         menu.addSeparator();
         menu.addItem(new MenuItem("Administration", adminMenu));
-        //add the menu to the root panel
         RootPanel.get("gwtContainer1").add(menu);
         RootPanel.get("gwtContainer2").add(label);
 
@@ -189,39 +119,106 @@ public class MySampleApplication implements EntryPoint {
 
     private static class DataLoadAsyncCallback implements AsyncCallback<List<Bus>> {
         List<Bus> busList;
+        final Label label = new Label();
+
 
         public DataLoadAsyncCallback(List<Bus> busList) {
             this.busList = busList;
         }
-        public void onSuccess(List<Bus> busList) {
-            System.out.println("busList = " + busList);
-        }
 
+
+        public void createTable(List<Bus> busListResult){
+//            Window.alert("busListResult onSuccess" + "DataLoadAsyncCallback: busListResult size = " + busListResult.get(0).getBeginstop());
+
+
+            // Create a CellTable.
+            CellTable<Bus> table = new CellTable<Bus>();
+            table.setKeyboardSelectionPolicy(HasKeyboardSelectionPolicy.KeyboardSelectionPolicy.ENABLED);
+            // Add a text column to show the name.
+
+            TextColumn<Bus> nameColumn =
+                    new TextColumn<Bus>() {
+                        @Override
+                        public String getValue(Bus object) {
+                            return object.getNumber();
+                        }
+                    };
+            table.addColumn(nameColumn, "Bus number");
+            TextColumn<Bus> beginStopColumn
+                    = new TextColumn<Bus>() {
+                @Override
+                public String getValue(Bus object) {
+                    return object.getBeginstop();
+                }
+            };
+            table.addColumn(beginStopColumn, "Begin stop");
+
+            // Add a text column to show the address.
+            TextColumn<Bus> endStopColumn
+                    = new TextColumn<Bus>() {
+                @Override
+                public String getValue(Bus object) {
+                    return object.getEndstop();
+                }
+            };
+            table.addColumn(endStopColumn, "End stop");
+
+            TextColumn<Bus> timeColumn
+                    = new TextColumn<Bus>() {
+                @Override
+                public String getValue(Bus object) {
+                    return object.getTimeofsvobodasq();
+                }
+            };
+            table.addColumn(timeColumn, "Time of the bus on Svoboda sq.");
+
+            // Add a selection model to handle user selection.
+            final SingleSelectionModel<Bus> selectionModel
+                    = new SingleSelectionModel<Bus>();
+            table.setSelectionModel(selectionModel);
+            selectionModel.addSelectionChangeHandler(
+                    new SelectionChangeEvent.Handler() {
+                        public void onSelectionChange(SelectionChangeEvent event) {
+                            Bus selected = selectionModel.getSelectedObject();
+                            if (selected != null) {
+                                Window.alert("You selected: " + selected.getNumber());
+                            }
+                        }
+                    });
+
+            table.setRowCount( busListResult.size(), true);
+            table.setVisibleRange(0,busListResult.size());
+            table.setRowData(0, busListResult);
+
+            panel.setBorderWidth(1);
+            panel.add(table);
+        }
+        @Override
+        public void onSuccess(List<Bus> busListResult) {
+
+            createTable(busListResult);
+
+        }
+        @Override
         public void onFailure(Throwable throwable) {
-            System.out.println("failed");
+            System.out.println("DataLoadAsyncCallback: failed");
+            label.setText("Failed to receive answer from server!");
         }
 
     }
     private static class MyAsyncCallback implements AsyncCallback<String> {
         private Label label;
-        CellTable<Bus> table;
-
 
         public MyAsyncCallback(Label label) {
             this.label = label;
         }
+        @Override
         public void onSuccess(String result) {
             label.getElement().setInnerHTML(result);
         }
-
+        @Override
         public void onFailure(Throwable throwable) {
             label.setText("Failed to receive answer from server!");
-        }
-
-
-
-        public MyAsyncCallback(CellTable<Bus> table) {
-            this.table = table;
         }
     }
 }
