@@ -6,6 +6,7 @@ import com.mySampleApplication.shared.Bus;
 import com.mySampleApplication.client.MySampleApplicationService;
 
 import java.io.InputStream;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -23,6 +24,7 @@ public class MySampleApplicationServiceImpl extends RemoteServiceServlet impleme
         InputStream dataFile = getClass().getResourceAsStream("busTimetable.xml");
         System.out.println("dataFile = " + dataFile);
         //("com/mySampleApplication/server/busTimetable.xml");
-        return GetDataFromXml.getXMLdata(dataFile);
+
+        return  GetDataFromXml.getXMLdata(dataFile);
     }
 }
