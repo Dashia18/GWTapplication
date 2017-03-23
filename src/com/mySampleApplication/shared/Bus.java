@@ -1,6 +1,7 @@
 package com.mySampleApplication.shared;
 
 import java.io.Serializable;
+import java.util.Comparator;
 
 /**
  * Created by Daria Serebryakova on 20.03.2017.
@@ -53,4 +54,8 @@ public class Bus implements Serializable{
     public void setTimeofsvobodasq(String timeofsvobodasq) {
         this.timeofsvobodasq = timeofsvobodasq;
     }
+
+
+
+
 }
