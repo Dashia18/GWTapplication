@@ -2,6 +2,8 @@ package com.mySampleApplication.client;
 
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.cellview.client.CellTable;
@@ -19,6 +21,7 @@ import com.mySampleApplication.shared.Bus;
 
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -37,11 +40,24 @@ public class MySampleApplication implements EntryPoint {
 
         final List<Bus> busList = new ArrayList<>();
         ListBox listBox = new ListBox();
+        listBox.addItem("(none)");
         listBox.addItem("Sort by number");
         listBox.addItem("Sort by begin stop");
         listBox.addItem("Sort by end stop");
         listBox.addItem("Sort by time on the stop");
         listBox.setVisibleItemCount(1);
+
+        listBox.addChangeHandler(new ChangeHandler() {
+            @Override
+            public void onChange(ChangeEvent event) {
+//                Window.alert(listBox.getSelectedValue());
+                panel.clear();
+                String sortingType = listBox.getSelectedValue();
+//                if(!listBox.isItemSelected(0)) {
+                    MySampleApplicationService.App.getInstance().getSortedDataList(sortingType, new DataLoadAsyncCallback(busList));
+//                }
+            }
+        });
 
 //        listBox.addChangeHandler(n)
         final HorizontalPanel panelForm = new HorizontalPanel();
@@ -67,7 +83,7 @@ public class MySampleApplication implements EntryPoint {
             @Override
             public void onClick(ClickEvent event) {
                 panel.clear();
-                MySampleApplicationService.App.getInstance().getDataList("add",
+                MySampleApplicationService.App.getInstance().addDataToList(
                         new Bus(tb1.getText(),tb2.getText(), tb3.getText(),tb4.getText()),
                         new DataLoadAsyncCallback(busList));
 
@@ -115,10 +131,11 @@ public class MySampleApplication implements EntryPoint {
                 decoratorPanel.setVisible(false);
                 listBox.setVisible(true);
 
-
-
                 mode = "seeTimetable";
-                MySampleApplicationService.App.getInstance().getDataList("", new Bus(),new DataLoadAsyncCallback(busList));
+                int pagingCount = 10;
+
+                MySampleApplicationService.App.getInstance().getDataList(0, new Bus(),new DataLoadAsyncCallback(busList));
+
             }
         });
 
@@ -150,7 +167,7 @@ public class MySampleApplication implements EntryPoint {
 
 
 
-                MySampleApplicationService.App.getInstance().getDataList("", new Bus(),new DataLoadAsyncCallback(busList));
+                MySampleApplicationService.App.getInstance().getDataList(0, new Bus(),new DataLoadAsyncCallback(busList));
 
 
 
@@ -174,6 +191,9 @@ public class MySampleApplication implements EntryPoint {
 
     private static void createTable(List<Bus> busListResult){
         // Create a CellTable.
+//        Window.alert("Hello createTable");
+//        System.out.println("Hello createTable");
+
         CellTable<Bus> table = new CellTable<Bus>();
         table.setKeyboardSelectionPolicy(HasKeyboardSelectionPolicy.KeyboardSelectionPolicy.ENABLED);
         // Add a text column to show the name.
@@ -246,7 +266,7 @@ public class MySampleApplication implements EntryPoint {
         }
         else{
             panel.clear();
-            MySampleApplicationService.App.getInstance().getDataList("delete",
+            MySampleApplicationService.App.getInstance().deleteDataFromList(
                     new Bus(selected.getNumber(),selected.getBeginstop(),
                             selected.getEndstop(), selected.getTimeofsvobodasq()), new DataLoadAsyncCallback(busListResult));
         }
@@ -265,13 +285,15 @@ public class MySampleApplication implements EntryPoint {
 
         @Override
         public void onSuccess(List<Bus> busListResult) {
+//            Window.alert("Hello DataLoadAsyncCallback");
+
 
             createTable(busListResult);
 
         }
         @Override
         public void onFailure(Throwable throwable) {
-            System.out.println("DataLoadAsyncCallback: failed");
+//            System.out.println("DataLoadAsyncCallback: failed");
             label.setText("Failed to receive answer from server!");
         }
 
