@@ -19,6 +19,8 @@ body, td, a, div, .p {
     border-radius: 5px;
     /*color: crimson;*/
 }
+
+
 #tittle-text{
     font-size: 28px;
     text-align:  center;
@@ -32,30 +34,78 @@ body, td, a, div, .p {
     color: grey;
     font-style: italic;
     padding-left: 10px;
+    padding-bottom: 10px;
 }
 .main-menu-style {
     padding-left: 10px;
 }
 
 
+.gwt-MenuItem{
+    cursor: pointer;
+    background-color: #FFFFFF;
+}
+
 .gwt-MenuItem:hover {
     color: crimson;
+
 }
 
 .gwt-MenuBar table{
     border: 1px solid grey;
     box-shadow: 0 0 5px grey;
     border-radius: 5px;
-
+    background-color: #FFFFFF;
 }
 .gwt-MenuItemSeparator{
     border-left:  1px solid #e0e0e0;
+
 }
 #gwtContainer1{
-     height: 80px;
+     height: 40px;
 
  }
 #gwtContainer2{
     padding-left: 10px;
 
  }
+.my-button{
+    width: 120px;
+    height: 23px;
+    font-size: 16px;
+    border: 1px solid grey;
+    border-radius: 3px;
+    background: #FFF;
+    color: black;
+    cursor: pointer;
+    box-shadow: 0 0 5px grey;
+}
+.my-button:hover {
+    color: crimson;
+    text-decoration: none;
+    box-shadow: 0 0 5px crimson;
+}
+.gwt-DecoratorPanel{
+     margin-top: 20px;
+}
+
+.text-box-form{
+    width: 179px;
+    height: 22px;
+    margin-right: 10px;
+    box-shadow: 0 0 5px grey;
+    border: 1px solid grey;
+    border-radius: 2px;
+}
+select{
+    margin-left: 560px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-left: 5px;
+    font-size: 14px;
+    box-shadow: 0 0 5px grey;
+    cursor: pointer;
+}
+
