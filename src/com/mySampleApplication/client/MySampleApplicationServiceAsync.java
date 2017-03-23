@@ -7,5 +7,10 @@ import java.util.List;
 
 public interface MySampleApplicationServiceAsync {
     void getMessage(String msg, AsyncCallback<String> async);
-    void getDataList(String msg, Bus newBus, AsyncCallback<List<Bus>> async);
+    void getDataList(int msg, Bus newBus, AsyncCallback<List<Bus>> async);
+
+    void addDataToList(Bus newBus, AsyncCallback<List<Bus>> async);
+    void deleteDataFromList(Bus newBus, AsyncCallback<List<Bus>> async);
+
+    void getSortedDataList(String msg, AsyncCallback<List<Bus>> async);
 }
