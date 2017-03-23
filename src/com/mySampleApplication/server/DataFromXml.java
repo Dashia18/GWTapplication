@@ -22,14 +22,14 @@ import java.util.Properties;
  * Created by Daria Serebryakova on 20.03.2017.
  */
 public class DataFromXml {
-    TransformerFactory tf;
-    DocumentBuilderFactory dbf;
+    private TransformerFactory tf;
+    private DocumentBuilderFactory dbf;
 
-    String dataFileURL;
-    Document doc;
-    List<Bus> buses;
+    private String dataFileURL;
+    private Document doc;
+    private List<Bus> buses;
 
-    public DataFromXml() {
+    DataFromXml() {
         // Warning! For internal reasons, DocumentBuilderFactory initialises from system configuration
         // on the first call only, and in case if the configuration of the system mismatches the one
         // that was used during DocumentBuilder factory initialization on the next call,
@@ -45,16 +45,20 @@ public class DataFromXml {
             dataFileURL = DataFromXml.class.getResource("busTimetable.xml").getPath();
     }
 
-    public List<Bus> getXMLdata(String msg, Bus comeBus){
+    public List<Bus> getBuses() {
+        return buses;
+    }
+
+    List<Bus> getXMLdata(){
         InputStream stream = DataFromXml.class.getResourceAsStream("busTimetable.xml");
 
         System.out.println("dataFileURL = " + dataFileURL);
         System.out.println("stream = " + stream);
 
         buses = new ArrayList<>();
-        System.out.println("NEW BUS number = "+comeBus.getNumber());
+//        System.out.println("NEW BUS number = "+comeBus.getNumber());
         System.out.println("stream = " + stream);
-        System.out.println("msg = " + msg);
+//        System.out.println("msg = " + msg);
 
         DocumentBuilder db  = null;
         doc = null;
@@ -121,7 +125,7 @@ public class DataFromXml {
         return buses;
     }
 
-    public void setXMLdata(){
+    private void setXMLdata(){
             DOMSource source = new DOMSource(doc);
             try {
                 Transformer t = tf.newTransformer();
@@ -132,7 +136,7 @@ public class DataFromXml {
                 e.printStackTrace();
             }
     }
-    public List<Bus> addNewBus(Bus newBus){
+    List<Bus> addNewBus(Bus newBus){
 
         buses.add(newBus);
 
@@ -161,7 +165,7 @@ public class DataFromXml {
         return buses;
     }
 
-    public List<Bus> deleteBus(Bus comeBus){
+    List<Bus> deleteBus(Bus comeBus){
         Iterator<Bus> iter = buses.iterator();
         Bus bus;
         int ind = 0;
