@@ -5,8 +5,6 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.mySampleApplication.shared.Bus;
 import com.mySampleApplication.client.MySampleApplicationService;
 
-import java.io.InputStream;
-import java.util.Iterator;
 import java.util.List;
 
 
@@ -14,17 +12,25 @@ public class MySampleApplicationServiceImpl extends RemoteServiceServlet impleme
     // Implementation of sample interface method
     @Override
     public String getMessage(String msg) {
-        return "Client said: \"" + msg + "\"<br>Server answered: \"Hi!\"";
+        return "* " + msg + "<br>* march 2017";
     }
 
-    @Override
-    public List<Bus> loadData(String msg)
-    {
-        //for static method: CurrentClass.class.getResourceAsStream("busTimetable.xml")
-        InputStream dataFile = getClass().getResourceAsStream("busTimetable.xml");
-        System.out.println("dataFile = " + dataFile);
-        //("com/mySampleApplication/server/busTimetable.xml");
 
-        return  GetDataFromXml.getXMLdata(dataFile);
+    @Override
+    public List<Bus> getDataList(String msg, Bus newBus)
+    {
+
+        //for static method: CurrentClass.class.getResourceAsStream("busTimetable.xml")
+        DataFromXml dataLoader = new DataFromXml();
+        List<Bus> busses;
+        busses = dataLoader.getXMLdata(msg, newBus);
+        if(msg.equals("add")){
+            busses = dataLoader.addNewBus(newBus);
+        }
+        else if(msg.equals("delete")){
+            busses = dataLoader.deleteBus(newBus);
+        }
+
+        return  busses;
     }
 }

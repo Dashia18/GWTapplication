@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface MySampleApplicationServiceAsync {
     void getMessage(String msg, AsyncCallback<String> async);
-    void loadData(String msg, AsyncCallback<List<Bus>> async);
+    void getDataList(String msg, Bus newBus, AsyncCallback<List<Bus>> async);
 }

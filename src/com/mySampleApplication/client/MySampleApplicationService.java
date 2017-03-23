@@ -12,7 +12,7 @@ import java.util.List;
 public interface MySampleApplicationService extends RemoteService {
     // Sample interface method of remote interface
     String getMessage(String msg);
-    List<Bus> loadData(String msg);
+    List<Bus> getDataList(String msg, Bus newBus);
 
 
     /**
