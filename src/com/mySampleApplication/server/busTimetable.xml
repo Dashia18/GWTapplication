@@ -115,6 +115,12 @@
         <timeofsvobodasq>10.35</timeofsvobodasq>
     </bus>
     <bus>
+        <number>11</number>
+        <beginstop>Gagarina ave.</beginstop>
+        <endstop>Dolgopolova st.</endstop>
+        <timeofsvobodasq>19.47</timeofsvobodasq>
+    </bus>
+    <bus>
         <number>7</number>
         <beginstop>Kosmicheskay st.</beginstop>
         <endstop>Varvarskay st.</endstop>
