@@ -13,12 +13,13 @@ public interface MySampleApplicationService extends RemoteService {
     // Sample interface method of remote interface
     String getMessage(String msg);
     List<Bus> getDataList(int msg, Bus newBus);
+    List<Bus> getCurrentList(int msg);
 
-    List<Bus> addDataToList( Bus newBus);
-    List<Bus> deleteDataFromList(Bus newBus);
+    List<Bus> addDataToList(int fromInd, Bus newBus);
+    List<Bus> deleteDataFromList(int fromInd, Bus newBus);
 
-    List<Bus> getSortedDataList(String msg);
-
+    List<Bus> getSortedDataList(int fromInd, String msg);
+    Integer getListSize();
 
     /**
      * Utility/Convenience class.
