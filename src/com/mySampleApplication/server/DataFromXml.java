@@ -27,7 +27,7 @@ public class DataFromXml {
 
     private String dataFileURL;
     private Document doc;
-    private List<Bus> buses;
+    List<Bus> buses;
 
     DataFromXml() {
         // Warning! For internal reasons, DocumentBuilderFactory initialises from system configuration
@@ -56,10 +56,6 @@ public class DataFromXml {
         System.out.println("stream = " + stream);
 
         buses = new ArrayList<>();
-//        System.out.println("NEW BUS number = "+comeBus.getNumber());
-        System.out.println("stream = " + stream);
-//        System.out.println("msg = " + msg);
-
         DocumentBuilder db  = null;
         doc = null;
         try {
@@ -122,6 +118,8 @@ public class DataFromXml {
                         " "+bus.getEndstop()+" "+ bus.getTimeofsvobodasq());
                 System.out.println();
             }
+
+
         return buses;
     }
 
