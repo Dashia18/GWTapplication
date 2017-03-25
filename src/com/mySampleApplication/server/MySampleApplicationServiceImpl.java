@@ -5,12 +5,16 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.mySampleApplication.shared.Bus;
 import com.mySampleApplication.client.MySampleApplicationService;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 
 public class MySampleApplicationServiceImpl extends RemoteServiceServlet implements MySampleApplicationService {
-    // Implementation of sample interface method
+
+    private List<Bus> currentList;
+
     @Override
     public String getMessage(String msg) {
         return "* " + msg + "<br>* march 2017";
@@ -18,51 +22,109 @@ public class MySampleApplicationServiceImpl extends RemoteServiceServlet impleme
 
 
     @Override
-    public List<Bus> getDataList(int msg, Bus newBus)
+    public List<Bus> getDataList(int fromInd, Bus newBus)
     {
+
         //for static method: CurrentClass.class.getResourceAsStream("busTimetable.xml")
         DataFromXml dataLoader = new DataFromXml();
-        List<Bus> busses;
-        busses = dataLoader.getXMLdata();
+        List<Bus> buses = dataLoader.getXMLdata();
+        currentList = buses;
 
-//        if(msg.equals("add")){
-//            busses = dataLoader.addNewBus(newBus);
-//        }
-//        else if(msg.equals("delete")){
-//            busses = dataLoader.deleteBus(newBus);
-//        }
-
-        return  busses;
+        List<Bus> subList = new ArrayList<>(buses.subList(fromInd, fromInd + 10));
+        return  subList;
     }
 
     @Override
-    public List<Bus> addDataToList(Bus newBus) {
+    public List<Bus> getCurrentList(int fromInd) {
+        return getSubList( currentList, fromInd);
+    }
+
+    @Override
+    public Integer getListSize() {
+
+        List<Bus> buses;
+        if(currentList==null){
+            DataFromXml dataLoader = new DataFromXml();
+            buses = dataLoader.getXMLdata();
+        }
+        else {
+            buses = currentList;
+        }
+
+        return buses.size();
+    }
+
+    private List<Bus> getSubList(List<Bus> buses, int fromInd){
+        int step = 10;
+
+        List<Bus> subList;
+        if(buses==null ){
+            subList = null;
+        }
+        else {
+
+            if (buses.size()<10){
+                step=buses.size();
+            }
+            subList = new ArrayList<>(buses.subList(fromInd, fromInd + step));
+        }
+        return subList;
+    }
+
+    @Override
+    public List<Bus> addDataToList(int fromInd, Bus newBus) {
         DataFromXml dataLoader = new DataFromXml();
-        List<Bus> busses;
+        List<Bus> buses;
         dataLoader.getXMLdata();
-        busses = dataLoader.addNewBus(newBus);
-        return busses;
+        buses = dataLoader.addNewBus(newBus);
+        currentList = buses;
+        List<Bus> subList = new ArrayList<>(buses.subList(fromInd, fromInd + 10));
+        return subList;
     }
 
     @Override
-    public List<Bus> deleteDataFromList(Bus newBus) {
+    public List<Bus> deleteDataFromList(int fromInd,Bus newBus) {
 
         DataFromXml dataLoader = new DataFromXml();
-        List<Bus> busses;
+        List<Bus> buses;
         dataLoader.getXMLdata();
-        busses = dataLoader.deleteBus(newBus);
+        buses = dataLoader.deleteBus(newBus);
+        currentList = buses;
+        List<Bus> subList = new ArrayList<>(buses.subList(fromInd, fromInd + 10));
 
-        return busses;
+        return subList;
     }
 
     @Override
-    public List<Bus> getSortedDataList(String msg) {
-        DataFromXml dataLoader = new DataFromXml();
-        List<Bus> busses;
-        busses = dataLoader.getXMLdata();
-        busses = SortBusList.getSortedBuses(msg, busses);
+    public List<Bus> getSortedDataList(int fromInd, String msg) {
+
+//            DataFromXml dataLoader = new DataFromXml();
+            List<Bus> buses;
+//            buses = dataLoader.getXMLdata();
+            buses = SortBusList.getSortedBuses(msg, currentList);
+            currentList = buses;
+            List<Bus> subList = getSubList(buses, fromInd);
 
 
-        return busses;
+
+        return subList;
     }
+
+    @Override
+    public List<Bus> getFilteringDataList(int fromInd, String number, String beginStop,
+                                          String endStop, String beginTime, String endTime) {
+
+        DataFromXml dataLoader = new DataFromXml();
+        List<Bus> buses;
+        buses = dataLoader.getXMLdata();
+        buses = FilterBusList.getFilteredBuses(buses,number,beginStop,endStop,beginTime,endTime);
+
+        List<Bus> subList = getSubList( buses, fromInd);
+        currentList = buses;
+
+        return subList;
+    }
+
+
+
 }
