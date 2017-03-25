@@ -109,15 +109,15 @@ public class DataFromXml {
             e.printStackTrace();
         }
 
-        System.out.println("buses list size = " + buses.size());
-        Iterator<Bus> iter = buses.iterator();
-        Bus bus;
-            while(iter.hasNext()){
-                bus = iter.next();
-                System.out.print(bus.getNumber() + " " +bus.getBeginstop()+
-                        " "+bus.getEndstop()+" "+ bus.getTimeofsvobodasq());
-                System.out.println();
-            }
+//        System.out.println("buses list size = " + buses.size());
+//        Iterator<Bus> iter = buses.iterator();
+//        Bus bus;
+//            while(iter.hasNext()){
+//                bus = iter.next();
+//                System.out.print(bus.getNumber() + " " +bus.getBeginstop()+
+//                        " "+bus.getEndstop()+" "+ bus.getTimeofsvobodasq());
+//                System.out.println();
+//            }
 
 
         return buses;
