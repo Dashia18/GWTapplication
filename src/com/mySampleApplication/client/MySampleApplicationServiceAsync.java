@@ -13,6 +13,8 @@ public interface MySampleApplicationServiceAsync {
     void deleteDataFromList(int fromInd, Bus newBus, AsyncCallback<List<Bus>> async);
 
     void getSortedDataList(int fromInd, String msg, AsyncCallback<List<Bus>> async);
+    void getFilteringDataList(int fromInd, String number, String beginStop,
+                              String endStop ,String beginTime,String endTime, AsyncCallback<List<Bus>> async);
 
     void getListSize(AsyncCallback<Integer> async);
 }

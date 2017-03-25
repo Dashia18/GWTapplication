@@ -19,6 +19,8 @@ public interface MySampleApplicationService extends RemoteService {
     List<Bus> deleteDataFromList(int fromInd, Bus newBus);
 
     List<Bus> getSortedDataList(int fromInd, String msg);
+    List<Bus> getFilteringDataList(int fromInd, String number, String beginStop,
+                                   String endStop ,String beginTime,String endTime);
     Integer getListSize();
 
     /**
