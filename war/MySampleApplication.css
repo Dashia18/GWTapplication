@@ -67,7 +67,7 @@ body, td, a, div, .p {
  }
 #gwtContainer2{
     padding-left: 10px;
-
+    /* width: 600px; */
  }
 .my-button{
     width: 120px;
@@ -98,7 +98,7 @@ body, td, a, div, .p {
     border-radius: 2px;
 }
 select{
-    margin-left: 560px;
+    margin-left: 569px;
     margin-bottom: 15px;
     border-radius: 3px;
     padding-bottom: 5px;
@@ -108,4 +108,49 @@ select{
     box-shadow: 0 0 5px grey;
     cursor: pointer;
 }
+.paging-button{
+    margin-top: 10px;
+
+}
+.paging-button:first-child{
+    margin-right: 500px;
+}
+.time-table{
+    /*margin: auto;*/
+    box-shadow: 0 0 5px grey;
+    /*width: 70%;*/
+}
+.text-box-filter{
+    width: 140px;
+    height: 22px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 0 0 5px grey;
+    border: 1px solid grey;
+    border-radius: 2px;
+
+    /* float: left; */
+}
+.text-time{
+    width: 60px;
+}
+.filter-style{
+    width: 320px;
+    border:1px solid grey;
+    padding: 10px;
+    margin-left: 40px;
+    box-shadow: 0 0 5px grey;
+    border-radius: 2px;
+    /*margin-top: -10px;*/
+}
+.filter-main-box{
+    float: left;
+
+}
+.filter-button{
+    margin-left: 170px;
+    margin-top: 15px;
+}
+
 
